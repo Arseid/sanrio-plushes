@@ -5,6 +5,9 @@ import {Product} from "./models/product.model";
   selector: 'app-root',
   template: `
     <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+    <mat-slider min="1" max="100" step="1" value="50">
+      <input matSliderThumb>
+    </mat-slider>
     <router-outlet></router-outlet>
   `,
   styles: []
