@@ -1,10 +1,10 @@
-<h2>{{product.title}}</h2>
+<h2>{{product.title | uppercase}}</h2>
 <img [src]="product.imageUrl" alt="" width=100/>
 <p>{{product.description}}</p>
 <p *ngIf="product.size">Multiple sizes available</p>
 <div class="price-likes">
     <p>
-        <b>{{selectedPrice}} $</b>
+        <b>{{selectedPrice | currency:'EUR'}}</b>
         <select (change)="onSizeSelected($event)" *ngIf="product.size">
             <option *ngFor="let size of product.size" value="{{size}}">{{size}}</option>
         </select>
