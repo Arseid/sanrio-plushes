@@ -12,11 +12,13 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    SortByDatePipe
   ],
     imports: [
         BrowserModule,
