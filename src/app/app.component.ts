@@ -4,7 +4,7 @@ import {Product} from "./models/product.model";
 @Component({
   selector: 'app-root',
   template: `
-    <app-product-card *ngFor="let product of (products | sortByDate)" [product]="product"></app-product-card>
+    <app-product-card *ngFor="let product of (products | sortByDate:'desc')" [product]="product"></app-product-card>
     <mat-slider min="1" max="100" step="1" value="50">
       <input matSliderThumb>
     </mat-slider>
