@@ -7,6 +7,7 @@ import {Product} from "../models/product.model";
 export class ProductsService {
     products: Product[] = [
         new Product(
+            1,
             'Kuromi Plush',
             'Plush of Kuromi, leader of a biker gang known as \"Kuromi\'s 5\".',
             [47.95, 59.99],
@@ -17,6 +18,7 @@ export class ProductsService {
             ["Petit","Grand"]
         ),
         new Product(
+            2,
             'Hello Kitty Plush',
             'Plush of Hello kitty, also known as \"Kitty White\".',
             [32.95, 44.99],
@@ -27,6 +29,14 @@ export class ProductsService {
             ["Petit","Grand"]
         )
     ];
+
+    getOneProduct(id: number): Product {
+        const product = this.products.find((product) => product.id === id);
+        if (!product) {
+            throw new Error(`Product with id ${id} not found.`);
+        }
+        return product;
+    }
 
     getAllProducts(): Product[] {
         return this.products;

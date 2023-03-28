@@ -18,6 +18,7 @@ import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     SearchPipePipe,
     ProductsListComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductDetailComponent
   ],
     imports: [
         BrowserModule,
