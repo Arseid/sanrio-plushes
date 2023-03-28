@@ -15,13 +15,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import {FormsModule} from '@angular/forms';
 import { SearchPipePipe } from './pipes/search-pipe.pipe';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
     SortByDatePipe,
-    SearchPipePipe
+    SearchPipePipe,
+    ProductsListComponent,
+    HeaderComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,
