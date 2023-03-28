@@ -5,7 +5,10 @@ import {ProductsService} from "./services/product.service";
 @Component({
   selector: 'app-root',
   template: `
-    <app-product-card *ngFor="let product of (products | sortByDate:'desc')" [product]="product"></app-product-card>
+    <div>Chercher : <input type="text" id="search" name="search" [(ngModel)]="search"/></div>
+    <div>La recherche {{search}}</div>
+    <app-product-card *ngFor="let product of (products | sortByDate:'desc' | filterBySearch:search)" [product]="product">
+    </app-product-card>
     <mat-slider min="1" max="100" step="1">
       <input matSliderThumb>
     </mat-slider>
@@ -15,11 +18,14 @@ import {ProductsService} from "./services/product.service";
 })
 export class AppComponent implements OnInit {
   products!: Product[];
+  search: string = '';
+  title: string = '';
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
+    this.search = "";
     this.products = this.productsService.products;
+    this.title = 'Sanrio Products';
   }
-  title = 'test_angular';
 }

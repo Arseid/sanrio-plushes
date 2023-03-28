@@ -13,19 +13,23 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import {FormsModule} from '@angular/forms';
+import { SearchPipePipe } from './pipes/search-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
-    SortByDatePipe
+    SortByDatePipe,
+    SearchPipePipe
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
         MatSliderModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        FormsModule
     ],
   providers: [ {
       provide: LOCALE_ID,
