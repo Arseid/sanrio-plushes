@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
 import {ActivatedRoute} from "@angular/router";
 import {ProductsService} from "../services/product.service";
+import {FavoriteProductsService} from "../services/favorite-products.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -14,7 +15,8 @@ export class ProductDetailComponent implements OnInit {
   orientation!: string;
   selectedPrice = 0;
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute) {
+  constructor(private productsService: ProductsService, private favoritesService: FavoriteProductsService,
+              private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = parseInt(params['id']);
     })
@@ -30,6 +32,10 @@ export class ProductDetailComponent implements OnInit {
       this.product['isLiked'] = product['isLiked'];
       this.product['likes'] = product['likes'];
     })
+  }
+
+  onAddToFavorites(): void {
+    this.favoritesService.addToFavorites(this.product);
   }
 
   async ngOnInit(): Promise<void> {

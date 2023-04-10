@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../models/product.model';
 import {ProductsService} from "../services/product.service";
+import {FavoriteProductsService} from "../services/favorite-products.service";
 
 @Component({
   selector: 'app-product-card',
@@ -12,7 +13,7 @@ export class ProductCardComponent implements OnInit {
 
   selectedPrice = 0;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private favoritesService: FavoriteProductsService) { }
 
   onSizeSelected(e: any) {
     let priceIndex = this.product.size?.indexOf(e.target.value) || 0;
@@ -24,6 +25,10 @@ export class ProductCardComponent implements OnInit {
       this.product['isLiked'] = product['isLiked'];
       this.product['likes'] = product['likes'];
     })
+  }
+
+  onAddToFavorites(): void {
+    this.favoritesService.addToFavorites(this.product);
   }
 
   ngOnInit(): void {

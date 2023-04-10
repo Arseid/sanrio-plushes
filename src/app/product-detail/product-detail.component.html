@@ -14,6 +14,6 @@
         <p *ngIf="product.size && product.size.length > 1">Multiple sizes available</p>
         <p>{{ product.description }}</p>
         <p>Publication Date: {{ product.publicationDate | date }}</p>
-        <button>Add to favorites</button>
+        <button (click)="onAddToFavorites()">Add to favorites</button>
     </div>
 </div>
