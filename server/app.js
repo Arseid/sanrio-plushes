@@ -95,7 +95,7 @@ const products = [
     publicationDate: new Date(2023, 4, 10),
     isLiked: false,
     size: ['Medium']
-  },
+  }
 ]
 
 app.get('/products', (req, res) => {
@@ -104,13 +104,13 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/products/:id', (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id, 10);
   res.set('Access-Control-Allow-Origin', '*');
   res.json(products.find((p) => p.id === id))
 });
 
 app.put('/products/:id/likes', (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id, 10);
   let product = products.find((p) => p.id === id);
   if (product.isLiked) {
     product.likes--;
