@@ -4,6 +4,7 @@
     </a>
     <div class="product-info">
         <h2>{{ product.title | uppercase }}</h2>
+        <p *ngIf="product.size && product.size.length > 1" class="sizes-info">Multiple sizes available</p>
         <div class="price-likes">
             <p>
                 <b>{{ selectedPrice | currency: 'EUR' }}</b>
