@@ -11,6 +11,10 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from "@angular/material/input";
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import {FormsModule} from '@angular/forms';
@@ -37,9 +41,12 @@ import { AboutComponent } from './about/about.component';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        MatSliderModule,
         BrowserAnimationsModule,
-        FormsModule
+        FormsModule,
+        MatSliderModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
   providers: [ {
       provide: LOCALE_ID,
