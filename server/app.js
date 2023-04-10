@@ -17,7 +17,7 @@ const products = [
     likes: 0,
     publicationDate: new Date(2023, 3, 16),
     isLiked: false,
-    size: ['Medium, Big']
+    size: ['Medium', 'Big']
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const products = [
     likes: 0,
     publicationDate: new Date(2023, 3, 17),
     isLiked: false,
-    size: ['Medium, Big']
+    size: ['Medium', 'Big']
   },
   {
     id: 3,
@@ -83,7 +83,7 @@ const products = [
     likes: 0,
     publicationDate: new Date(2023, 4, 9),
     isLiked: false,
-    size: ['Small, Medium']
+    size: ['Small', 'Medium']
   },
   {
     id: 8,

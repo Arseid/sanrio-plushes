@@ -14,7 +14,9 @@ export class ProductsListComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.products = this.productsService.getAllProducts();
+    this.productsService.getAllProducts().then(products => {
+      this.products = products;
+    });
   }
 
   toggleSortOrder() {

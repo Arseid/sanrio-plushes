@@ -9,8 +9,11 @@ export class SortByDatePipe implements PipeTransform {
   transform(products: Product[], order?: any) {
     let desc = !(order && order === 'asc');
     return products.sort((a, b) => {
-      if (desc) return b.publicationDate.getTime() - a.publicationDate.getTime();
-      else return a.publicationDate.getTime() - b.publicationDate.getTime()
+      const aPublicationDate = new Date(a.publicationDate);
+      const bPublicationDate = new Date(b.publicationDate);
+
+      if (desc) return bPublicationDate.getTime() - aPublicationDate.getTime();
+      else return aPublicationDate.getTime() - bPublicationDate.getTime()
     });
   }
 

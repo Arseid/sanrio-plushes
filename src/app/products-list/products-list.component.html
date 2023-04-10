@@ -8,9 +8,11 @@
     </button>
 </div>
 <div class="products-list">
-    <div
-            *ngFor="let product of (products | sortByDate:sortOrder | filterBySearch:search)"
-    >
-        <app-product-card [product]="product"> </app-product-card>
-    </div>
+    <ng-container *ngIf="products">
+        <div
+                *ngFor="let product of (products | sortByDate:sortOrder | filterBySearch:search)"
+        >
+            <app-product-card [product]="product"> </app-product-card>
+        </div>
+    </ng-container>
 </div>

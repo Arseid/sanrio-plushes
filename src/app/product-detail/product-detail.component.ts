@@ -21,7 +21,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.myProduct = this.productService.getOneProduct(this.id);
+    this.productService.getOneProduct(this.id).then(product => {
+      this.myProduct = product;
+    });
     this.orientation = "landscape";
   }
 

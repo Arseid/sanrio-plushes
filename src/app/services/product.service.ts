@@ -5,41 +5,39 @@ import {Product} from "../models/product.model";
     providedIn: 'root'
 })
 export class ProductsService {
-    products: Product[] = [
-        new Product(
-            1,
-            'Kuromi Plush',
-            'Plush of Kuromi, leader of a biker gang known as \"Kuromi\'s 5\".',
-            [47.95, 59.99],
-            'https://cdn.shopify.com/s/files/1/0568/2298/8958/products/Kuromi-Plush-_Standard_-M-Japan-Figure-4550337050316-0_592x592.jpg?v=1634268901',
-            0,
-            new Date(2023, 3, 16),
-            false,
-            ["Petit","Grand"]
-        ),
-        new Product(
-            2,
-            'Hello Kitty Plush',
-            'Plush of Hello kitty, also known as \"Kitty White\".',
-            [32.95, 44.99],
-            'https://cdn.shopify.com/s/files/1/0568/2298/8958/products/Hello-Kitty-Plush-Toy-_Standard_-S-Japan-Figure-4901610504161-0_592x592.jpg?v=1634268404',
-            0,
-            new Date(2023, 3, 17),
-            false,
-            ["Petit","Grand"]
-        )
-    ];
+    private serverUrl = 'http://localhost:3000';
 
-    getOneProduct(id: number): Product {
-        const product = this.products.find((product) => product.id === id);
-        if (!product) {
-            throw new Error(`Product with id ${id} not found.`);
-        }
-        return product;
+    async getOneProduct(id: number): Promise<Product> {
+        const response = await fetch(`${this.serverUrl}/products/${id}`);
+        const data = await response.json();
+        return new Product(
+            data['id'],
+            data['title'],
+            data['description'],
+            data['price'],
+            data['imageUrl'],
+            data['likes'],
+            data['publicationDate'],
+            data['isLiked'],
+            data['size']
+        );
     }
 
-    getAllProducts(): Product[] {
-        return this.products;
+    async getAllProducts(): Promise<Product[]> {
+        const response = await fetch(`${this.serverUrl}/products`);
+        const data = await response.json();
+        console.log(data);
+        return data.map((product: any) => new Product(
+            product['id'],
+            product['title'],
+            product['description'],
+            product['price'],
+            product['imageUrl'],
+            product['likes'],
+            product['publicationDate'],
+            product['isLiked'],
+            product['size']
+        ));
     }
 
     onLikeProduct(product: Product): void {
