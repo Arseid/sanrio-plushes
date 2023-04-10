@@ -1,7 +1,7 @@
 <div class="product-card">
-    <div class="product-image">
+    <a class="product-image" [routerLink]="['/product', product.id]">
         <img [src]="product.imageUrl" alt="{{ product.title }}" />
-    </div>
+    </a>
     <div class="product-info">
         <h2>{{ product.title | uppercase }}</h2>
         <div class="price-likes">
@@ -16,5 +16,6 @@
                 <button (click)="onAddLike()">Like</button>
             </p>
         </div>
+        <button class="favorites-button">Add to favorites</button>
     </div>
 </div>

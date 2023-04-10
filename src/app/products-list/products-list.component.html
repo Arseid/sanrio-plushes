@@ -8,11 +8,9 @@
     </button>
 </div>
 <div class="products-list">
-    <a
+    <div
             *ngFor="let product of (products | sortByDate:sortOrder | filterBySearch:search)"
-            [routerLink]="['product', product.id]"
-            class="products-list-product-link"
     >
         <app-product-card [product]="product"> </app-product-card>
-    </a>
+    </div>
 </div>
