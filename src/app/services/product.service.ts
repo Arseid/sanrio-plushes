@@ -40,13 +40,24 @@ export class ProductsService {
         ));
     }
 
-    onLikeProduct(product: Product): void {
-        if (product.isLiked){
-            product.likes--;
-        }
-        else {
-            product.likes++;
-        }
-        product.isLiked =!product.isLiked;
+    async onLikeProduct(id: number): Promise<Product> {
+        const response = await fetch(`${this.serverUrl}/products/${id}/likes`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        return new Product(
+            data['id'],
+            data['title'],
+            data['description'],
+            data['price'],
+            data['imageUrl'],
+            data['likes'],
+            data['publicationDate'],
+            data['isLiked'],
+            data['size']
+        );
     }
 }

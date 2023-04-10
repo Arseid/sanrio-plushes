@@ -19,7 +19,12 @@ export class ProductCardComponent implements OnInit {
     this.selectedPrice = this.product.price[priceIndex];
   }
 
-  onAddLike() {this.productsService.onLikeProduct(this.product);}
+  onAddLike() {
+    this.productsService.onLikeProduct(this.product.id).then((product) => {
+      this.product['isLiked'] = product['isLiked'];
+      this.product['likes'] = product['likes'];
+    })
+  }
 
   ngOnInit(): void {
     this.selectedPrice=this.product.price[0];
