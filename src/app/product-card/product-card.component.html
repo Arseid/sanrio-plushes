@@ -1,17 +1,20 @@
-<h2>{{product.title | uppercase}}</h2>
-<img [src]="product.imageUrl" alt="" width=100/>
-<p>{{product.description}}</p>
-<p *ngIf="product.size">Multiple sizes available</p>
-<div class="price-likes">
-    <p>
-        <b>{{selectedPrice | currency:'EUR'}}</b>
-        <select (change)="onSizeSelected($event)" *ngIf="product.size">
-            <option *ngFor="let size of product.size" value="{{size}}">{{size}}</option>
-        </select>
-    </p>
-    <p>
-        <b>{{product.likes}} <3</b>
-        <button (click)="onAddLike()">Like</button>
-    </p>
+<div class="product-card">
+    <div class="product-image">
+        <img [src]="product.imageUrl" alt="{{ product.title }}" />
+    </div>
+    <div class="product-info">
+        <h2>{{ product.title | uppercase }}</h2>
+        <div class="price-likes">
+            <p>
+                <b>{{ selectedPrice | currency: 'EUR' }}</b>
+                <select (change)="onSizeSelected($event)" *ngIf="product.size">
+                    <option *ngFor="let size of product.size" value="{{ size }}">{{ size }}</option>
+                </select>
+            </p>
+            <p>
+                <b>{{ product.likes }} <3</b>
+                <button (click)="onAddLike()">Like</button>
+            </p>
+        </div>
+    </div>
 </div>
-<p>{{this.product.plubicationDate | date:'shortDate'}}</p>
