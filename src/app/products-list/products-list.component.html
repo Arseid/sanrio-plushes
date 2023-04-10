@@ -1,11 +1,18 @@
-<div>
-    Chercher : <input type="text" id="search" name="search" [(ngModel)]="search"/>
+<div class="products-list-search-container">
+    <mat-form-field appearance="outline" class="products-list-search-field" color="warn">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" id="search" name="search" [(ngModel)]="search" />
+    </mat-form-field>
+    <button mat-stroked-button (click)="toggleSortOrder()">
+        Sort by date ({{ sortOrder }})
+    </button>
 </div>
-<div>La recherche {{search}}</div>
-<div class="products">
-    <a *ngFor="let product of (products | sortByDate:'desc' | filterBySearch:search)"
-       [routerLink]="['product', product.id]" style="text-decoration: none; color: black">
-        <app-product-card [product]="product">
-        </app-product-card>
+<div class="products-list">
+    <a
+            *ngFor="let product of (products | sortByDate:sortOrder | filterBySearch:search)"
+            [routerLink]="['product', product.id]"
+            class="products-list-product-link"
+    >
+        <app-product-card [product]="product"> </app-product-card>
     </a>
 </div>
