@@ -10,7 +10,8 @@ import { ProductsService } from '../services/product.service';
 export class ProductsListComponent implements OnInit {
   products!: Product[];
   search: string = '';
-  sortOrder: string = 'desc';
+  sortTitle: string = 'asc';
+  sortDate: string = 'asc';
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
@@ -19,12 +20,22 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
-  toggleSortOrder() {
-    if (this.sortOrder==='desc'){
-      this.sortOrder = 'asc';
+  toggleSortOrder(sortType: string) {
+    if (sortType === 'title') {
+      if (this.sortTitle==='desc'){
+        this.sortTitle = 'asc';
+      }
+      else {
+        this.sortTitle = 'desc';
+      }
     }
     else {
-      this.sortOrder = 'desc';
+      if (this.sortDate==='desc'){
+        this.sortDate = 'asc';
+      }
+      else {
+        this.sortDate = 'desc';
+      }
     }
   }
 }

@@ -3,14 +3,19 @@
         <mat-label>Search</mat-label>
         <input matInput type="text" id="search" name="search" [(ngModel)]="search" />
     </mat-form-field>
-    <button mat-stroked-button (click)="toggleSortOrder()">
-        Sort by date ({{ sortOrder }})
-    </button>
+    <div class="sort-buttons">
+        <button mat-stroked-button (click)="toggleSortOrder('date')">
+            Sort by date ({{ sortDate }})
+        </button>
+        <button mat-stroked-button (click)="toggleSortOrder('title')">
+            Sort by date ({{ sortTitle }})
+        </button>
+    </div>
 </div>
 <div class="products-list">
     <ng-container *ngIf="products">
         <div
-                *ngFor="let product of (products | sortByDate:sortOrder | filterBySearch:search)"
+                *ngFor="let product of (products | sortByDate:sortDate | sortByTitle:sortTitle | filterBySearch:search)"
         >
             <app-product-card [product]="product"> </app-product-card>
         </div>

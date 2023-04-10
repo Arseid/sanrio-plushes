@@ -24,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AboutComponent } from './about/about.component';
+import { SortByTitlePipe } from './pipes/sort-by-title.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AboutComponent } from './about/about.component';
     HeaderComponent,
     FooterComponent,
     ProductDetailComponent,
-    AboutComponent
+    AboutComponent,
+    SortByTitlePipe
   ],
     imports: [
         BrowserModule,
