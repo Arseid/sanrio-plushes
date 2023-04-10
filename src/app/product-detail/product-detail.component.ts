@@ -6,29 +6,36 @@ import {ProductsService} from "../services/product.service";
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styles: [
-  ]
+  styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  myProduct!: Product;
+  product!: Product;
   id!: number;
   orientation!: string;
+  selectedPrice = 0;
 
-  constructor(private productService: ProductsService, private route: ActivatedRoute) {
+  constructor(private productsService: ProductsService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = parseInt(params['id']);
     })
   }
 
-  ngOnInit(){
-    this.productService.getOneProduct(this.id).then(product => {
-      this.myProduct = product;
-    });
-    this.orientation = "landscape";
+  onSizeSelected(e: any) {
+    let priceIndex = this.product.size?.indexOf(e.target.value) || 0;
+    this.selectedPrice = this.product.price[priceIndex];
   }
 
-  onLike() {
-    this.productService.onLikeProduct(this.myProduct)
+  onAddLike() {
+    this.productsService.onLikeProduct(this.product.id).then((product) => {
+      this.product['isLiked'] = product['isLiked'];
+      this.product['likes'] = product['likes'];
+    })
+  }
+
+  async ngOnInit(): Promise<void> {
+    this.product = await this.productsService.getOneProduct(this.id);
+    this.selectedPrice = this.product.price[0];
+    this.orientation = "landscape";
   }
 
 }

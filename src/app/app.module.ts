@@ -2,8 +2,8 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {registerLocaleData} from "@angular/common";
-import localeFr from '@angular/common/locales/fr';
-registerLocaleData(localeFr);
+import localeEn from '@angular/common/locales/en';
+registerLocaleData(localeEn, 'en');
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,10 +50,7 @@ import { SortByTitlePipe } from './pipes/sort-by-title.pipe';
         MatFormFieldModule,
         MatInputModule
     ],
-  providers: [ {
-      provide: LOCALE_ID,
-      useValue: 'fr-FR'
-  }],
+  providers: [ { provide: LOCALE_ID, useValue: 'en' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
