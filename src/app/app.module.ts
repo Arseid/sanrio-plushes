@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AboutComponent } from './about/about.component';
 import { SortByTitlePipe } from './pipes/sort-by-title.pipe';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SortByTitlePipe } from './pipes/sort-by-title.pipe';
     FooterComponent,
     ProductDetailComponent,
     AboutComponent,
-    SortByTitlePipe
+    SortByTitlePipe,
+    FavoritesComponent
   ],
     imports: [
         BrowserModule,
